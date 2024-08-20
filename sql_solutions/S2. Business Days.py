@@ -62,7 +62,7 @@ holiday_df.createOrReplaceTempView("holidays")
 # MAGIC   SELECT ticket_id, create_date, resolved_date, count(holiday_date) AS no_of_holidays
 # MAGIC   FROM tickets
 # MAGIC   LEFT JOIN holidays
-# MAGIC   ON holiday_date BETWEEN create_date AND resolved_date
+# MAGIC   ON holiday_date BETWEEN create_date AND resolved_date AND weekday(holiday_date) NOT IN (5,6)
 # MAGIC   GROUP BY ticket_id, create_date, resolved_date
 # MAGIC )
 # MAGIC ORDER BY ticket_id
